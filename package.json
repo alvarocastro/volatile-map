@@ -1,0 +1,34 @@
+{
+  "name": "volatile-map",
+  "version": "1.0.0",
+  "description": "ES6 Map object whose values are deleted after a TTL",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "babel src -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alvarocastro/volatile-map.git"
+  },
+  "keywords": [
+    "map",
+    "storage",
+    "cache",
+    "store",
+    "volatile"
+  ],
+  "author": "Alvaro Castro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alvarocastro/volatile-map/issues"
+  },
+  "homepage": "https://github.com/alvarocastro/volatile-map#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.12.13",
+    "@babel/core": "^7.12.13",
+    "@babel/preset-env": "^7.12.13"
+  }
+}
