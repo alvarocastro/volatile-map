@@ -1,19 +1,19 @@
 const DEFAULT_TTL = 600000; // 10 minutes
 
 class VolatileMap extends Map {
-	constructor (ttl) {
+	constructor(ttl) {
 		super();
 		this.ttl = ttl ?? DEFAULT_TTL;
 		this.schedules = new Map();
 	}
 
-	delete (key) {
+	delete(key) {
 		super.delete(key);
 		clearTimeout(this.schedules.get(key));
 		this.schedules.delete(key);
 	}
 
-	set (key, value, ttl = this.ttl) {
+	set(key, value, ttl = this.ttl) {
 		super.set(key, value);
 		if (this.schedules.has(key)) {
 			clearTimeout(this.schedules.get(key));
@@ -25,7 +25,7 @@ class VolatileMap extends Map {
 		this.schedules.set(key, schedule);
 	}
 
-	get (key) {
+	get(key) {
 		return super.get(key);
 	}
 }
