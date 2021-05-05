@@ -24,7 +24,7 @@ npm install volatile-map
 ## Usage
 
 ```js
-const VolatileMap = require('volatile-map');
+const VolatileMap = require('volatile-map').default;
 
 const cache = new VolatileMap(3000); // Values expire after 3 seconds
 
