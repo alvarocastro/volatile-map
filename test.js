@@ -1,17 +1,6 @@
-const test = require('ava');
-const VolatileMap = require('./dist/index').default;
-
-/**
- * Simple utility timeout method that returns a promise.
- */
-const timeoutPromise = function (cb, time) {
-	return new Promise(resolve => {
-		setTimeout(() => {
-			cb();
-			resolve();
-		}, time);
-	});
-};
+import test from 'ava';
+import delay from 'delay';
+import VolatileMap from './index.js';
 
 test('Should delete properties after TTL', async t => {
 	const m = new VolatileMap(300);
@@ -22,10 +11,10 @@ test('Should delete properties after TTL', async t => {
 	t.is(m.get('a'), 1);
 	t.is(m.get('b'), 2);
 
-	await timeoutPromise(() => {
-		t.is(m.get('a'), undefined);
-		t.is(m.get('b'), undefined);
-	}, 500);
+	await delay(500);
+
+	t.is(m.get('a'), undefined);
+	t.is(m.get('b'), undefined);
 });
 
 test('Should allow for custom TTL', async t => {
@@ -37,14 +26,15 @@ test('Should allow for custom TTL', async t => {
 	t.is(m.get('a'), 1);
 	t.is(m.get('b'), 2);
 
-	await timeoutPromise(() => {
-		t.is(m.get('a'), undefined);
-		t.is(m.get('b'), 2);
-	}, 500);
-	await timeoutPromise(() => {
-		t.is(m.get('a'), undefined);
-		t.is(m.get('b'), undefined);
-	}, 300);
+	await delay(500);
+
+	t.is(m.get('a'), undefined);
+	t.is(m.get('b'), 2);
+
+	await delay(300);
+
+	t.is(m.get('a'), undefined);
+	t.is(m.get('b'), undefined);
 });
 
 test('Should reset TTL after a non expired value is set', async t => {
@@ -54,16 +44,18 @@ test('Should reset TTL after a non expired value is set', async t => {
 
 	t.is(m.get('a'), 1);
 
-	await timeoutPromise(() => {
-		t.is(m.get('a'), 1);
-		m.set('a', 1);
-	}, 200);
-	await timeoutPromise(() => {
-		t.is(m.get('a'), 1);
-	}, 200);
-	await timeoutPromise(() => {
-		t.is(m.get('a'), undefined);
-	}, 200);
+	await delay(200);
+
+	t.is(m.get('a'), 1);
+	m.set('a', 1);
+
+	await delay(200);
+
+	t.is(m.get('a'), 1);
+
+	await delay(200);
+
+	t.is(m.get('a'), undefined);
 });
 
 test('Should delete timer after deleting a value', async t => {
@@ -73,7 +65,7 @@ test('Should delete timer after deleting a value', async t => {
 	m.delete('a');
 	t.is(m.get('a'), undefined);
 
-	await timeoutPromise(() => {
-		t.is(m.get('a'), undefined);
-	}, 400);
+	await delay(400);
+
+	t.is(m.get('a'), undefined);
 });

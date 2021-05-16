@@ -1,4 +1,4 @@
-const DEFAULT_TTL = 600000; // 10 minutes
+const DEFAULT_TTL = 600_000; // 10 minutes
 
 class VolatileMap extends Map {
 	constructor(ttl) {
