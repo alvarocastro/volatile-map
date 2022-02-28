@@ -1,5 +1,5 @@
-const test = require('ava');
-const VolatileMap = require('./dist/index').default;
+import test from 'ava';
+import VolatileMap from './index.js';
 
 /**
  * Simple utility timeout method that returns a promise.

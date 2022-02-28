@@ -1,0 +1,7 @@
+{
+  "rules": {
+    "unicorn/numeric-separators-style": ["error", {"onlyIfContainsSeparator": true}],
+    "space-before-function-paren": ["error", "always"],
+    "object-curly-spacing": ["error", "always"]
+  }
+}
