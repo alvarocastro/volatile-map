@@ -41,7 +41,6 @@ setTimeout(function () {
 	console.log(cache.get('baz'));
 	// => 'qux'
 }, 4000);
-
 ```
 
 ### VolatileMap([ttl = 600000])
