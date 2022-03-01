@@ -24,7 +24,7 @@ npm install volatile-map
 ## Usage
 
 ```js
-const VolatileMap = require('volatile-map').default;
+import VolatileMap from 'volatile-map';
 
 const cache = new VolatileMap(3000); // Values expire after 3 seconds
 
@@ -41,7 +41,6 @@ setTimeout(function () {
 	console.log(cache.get('baz'));
 	// => 'qux'
 }, 4000);
-
 ```
 
 ### VolatileMap([ttl = 600000])
