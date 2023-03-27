@@ -27,7 +27,7 @@
   "devDependencies": {
     "ava": "^4.0.1",
     "c8": "^7.11.0",
-    "semantic-release": "^17.3.9",
+    "semantic-release": "^21.0.0",
     "xo": "^0.48.0"
   }
 }
